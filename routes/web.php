@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/refresh', 'ApiController@refresh');
+Route::middleware(['auth'])->group(function () {
 
+	Route::get('/logout', 'HomeController@logout');
+	Route::get('/autos', 'CarController@index');
+});
 Route::get('/', function () {
     return redirect('/login');
 });

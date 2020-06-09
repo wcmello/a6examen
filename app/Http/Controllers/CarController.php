@@ -14,7 +14,10 @@ class CarController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'cars' => Car::withCount('files')->sortable()->paginate(15)
+        ];
+        return view('autos', $data);
     }
 
     /**
@@ -46,7 +49,7 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        //
+        
     }
 
     /**
