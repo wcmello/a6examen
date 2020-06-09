@@ -14,7 +14,9 @@ class CarController extends Controller
      */
     public function index()
     {
+
         $data = [
+            //haal alle autos op, maak ze sortable en filterable met 15 per pagina
             'cars' => Car::withCount('files')->sortable()->paginate(15)
         ];
         return view('autos', $data);
@@ -47,9 +49,13 @@ class CarController extends Controller
      * @param  \App\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function show(Car $car)
+    public function show($kenteken)
     {
-        
+        $data = [
+            //haal een auto op uit de database waar het kenteken overeenkomt met het kenteken in de route
+            'car' => Car::where('licenseplate', $kenteken)->with('files')->first()
+        ];
+        return view('auto', $data);
     }
 
     /**

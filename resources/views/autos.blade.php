@@ -13,9 +13,9 @@
 		</thead>
 		<tbody class="text-gray-700">
 			@foreach($cars as $car)
-				<tr>
+				<tr class="hover:bg-gray-300">
 					<td class="w-1/3 text-left py-3 px-4">{{$car->licenseplate}}</td>
-					<td class="w-1/3 text-left py-3 px-4">{{$car->brand}}</td>
+					<td class="w-1/3 text-left py-3 px-4 truncate">{{$car->brand}} - {{$car->version}}</td>
 					<td class="w-1/3 text-left py-3 px-4">{{$car->keyamount}}</td>
 					<td class="w-1/3 text-left py-3 px-4">{{$car->files_count}}</td>
 					<td class="w-1/3 text-left py-3 px-4"><a href="/auto/{{$car->licenseplate}}"><i class="fas fa-search"></i></a></td>
