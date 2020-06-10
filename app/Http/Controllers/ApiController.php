@@ -25,13 +25,13 @@ class ApiController extends Controller
 					$car = $car->json();
 
 					//check of de auto nog niet in de database staat
-					if (!Car::where('licenseplate', $car[0]['licensePlate'] ?? 'N/A')->first()) {
+					if (!Car::where('licenseplate', $car[0]['licensePlate'] ?? 'Not available')->first()) {
 						//maak een nieuwe instantie van Car aan en voeg de data toe die in de json staat
 						Car::create([
-							'brand' => $car[0]['make'] ?? 'N/A',
-							'model' => $car[0]['model'] ?? 'N/A',
-							'version' => $car[0]['version'] ?? 'N/A',
-							'licenseplate' => $car[0]['licensePlate'] ?? 'N/A',
+							'brand' => $car[0]['make'] ?? 'Not available',
+							'model' => $car[0]['model'] ?? 'Not available',
+							'version' => $car[0]['version'] ?? 'Not available',
+							'licenseplate' => $car[0]['licensePlate'] ?? 'Not available',
 							'sold' => 0,
 							'keyamount' => 0,
 						]);

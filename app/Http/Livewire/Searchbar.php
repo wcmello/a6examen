@@ -19,7 +19,15 @@ class Searchbar extends Component
     {
     	
 		$this->searchtext = preg_replace('/\s+/', '', $this->searchtext);
-		$this->cars = Car::where('licenseplate', 'like', '%'.$this->searchtext.'%')->orwhere('brand', 'like', '%'.$this->searchtext.'%')->orwhere('version', 'like', '%'.$this->searchtext.'%')->limit(10)->get();
+		$this->cars = Car::where('licenseplate', 'like', "%{$this->searchtext}%")
+		->orwhere('brand', 'like', "%{$this->searchtext}%")
+		->orwhere('model', 'like', "%{$this->searchtext}%")
+		->orwhere('licenseplate', $this->searchtext)
+		->orwhere('brand', $this->searchtext)
+		->orwhere('model', $this->searchtext)
+		->limit(10)->get();
+
+
 		if (!$this->cars->isEmpty()) {
 			$this->found = true;
 		}

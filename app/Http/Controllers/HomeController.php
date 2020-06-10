@@ -28,7 +28,8 @@ class HomeController extends Controller
         $data = [
             'carcount' =>  Car::count(),
             'filecount' => File::count(),
-            'keycount' => Car::sum('keyamount')
+            'keycount' => Car::sum('keyamount'),
+            'soldcount' => Car::where('sold', 1)->count()
         ];
         return view('home', $data);
     }

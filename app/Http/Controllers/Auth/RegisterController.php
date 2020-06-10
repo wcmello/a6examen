@@ -38,7 +38,13 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        if (User::count() >= 1) {
+            $this->middleware('auth');
+        }
+        else{
+            $this->middleware('guest');  
+        }
+        
     }
 
     /**
