@@ -19,8 +19,8 @@ class CreateCarsTable extends Migration
             $table->string('model');
             $table->string('version');
             $table->string('licenseplate');
-            $table->integer('keyamount');
-            $table->integer('sold');
+            $table->integer('keyamount')->default('0');
+            $table->integer('sold')->default('0');
             $table->timestamps();
         });
     }

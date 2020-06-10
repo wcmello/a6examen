@@ -17,7 +17,7 @@ class CarController extends Controller
 
         $data = [
             //haal alle autos op, maak ze sortable en filterable met 15 per pagina
-            'cars' => Car::withCount('files')->sortable()->paginate(15)
+            'cars' => Car::withCount('files')->sortable()->paginate(15)->onEachSide(1)
         ];
         return view('autos', $data);
     }

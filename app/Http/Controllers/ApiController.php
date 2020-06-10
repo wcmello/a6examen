@@ -9,9 +9,9 @@ class ApiController extends Controller
 {
 	//de main functie die word aangeroepen met een refresh
     public function refresh(){
-
+    	$token = $this->authenticate();
     	//haalt alle autos op in een lijst
-		$response = Http::withToken($this->authenticate())->get('https://advertisementapi.autotelexpro.nl/Vehicle/All');
+		$response = Http::withOptions(['verify' => false])->withToken($token)->get('https://advertisementapi.autotelexpro.nl/Vehicle/All');
 
 		//loop door elke auto in de lijst
 	    foreach ($response->json() as $stock) {
@@ -20,7 +20,7 @@ class ApiController extends Controller
 	    		//als deze auto een stockstatus van 2 heeft is hij op voorraad, daar checken we hier voor
 	    		if ($stockarray == 2) {
 	    			//haal hier de informatie van de auto op, op basis van stockNumber
-	    			$car = Http::withToken($this->authenticate())->get('https://advertisementapi.autotelexpro.nl/Vehicle/ByStockNumber/' . $stock['stockNumber']);
+	    			$car = Http::withOptions(['verify' => false])->withToken($token)->get('https://advertisementapi.autotelexpro.nl/Vehicle/ByStockNumber/' . $stock['stockNumber']);
 	    			//zet deze informatie om naar bruikbare json
 					$car = $car->json();
 
@@ -61,7 +61,7 @@ class ApiController extends Controller
     }
     public function authenticate(){
     	//haalt een nieuwe 0Auth2 key op
-    	$auth = Http::withHeaders([
+    	$auth = Http::withOptions(['verify' => false])->withHeaders([
 				'Content-type' => 'application/x-www-form-urlencoded'
 			])->asForm()->post('https://advertisementapi.autotelexpro.nl/oauth/token', [
 						'grant_type' => 'client_credentials',

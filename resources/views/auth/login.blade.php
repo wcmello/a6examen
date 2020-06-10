@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto">
+    <div class="mx-auto h-full" style="background-color: #2b2623;">
         <div class="flex flex-wrap justify-center">
             <div class="w-full max-w-sm">
                 <div class="h-64 w-full flex justify-center">

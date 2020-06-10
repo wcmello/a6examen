@@ -28,6 +28,7 @@ class Searchbar extends Component
 		}
 		if($this->searchtext == ""){
     		$this->cars = [];
+    		$this->found = false;
     	}
     }
 }

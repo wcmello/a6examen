@@ -40,11 +40,12 @@
 
                     <div class="relative text-sm">
                         <button id="userButton" class="flex items-center focus:outline-none mr-3">
-                            <span class="hidden md:inline-block">{{auth()->user()->name}} <i class="far fa-caret-square-down"></i></span>
+                            <span class="">{{auth()->user()->name}} <i class="far fa-caret-square-down"></i></span>
                         </button>
                         <div id="userMenu" class="bg-white rounded shadow-md mt-2 absolute mt-12 top-0 right-0 min-w-full overflow-auto z-30 invisible">
-                            <ul class="list-reset">
-                                <li><a href="{{ route('logout')}}" class="px-4 py-2 block text-gray-900 hover:bg-gray-400 no-underline hover:no-underline">Logout</a></li>
+                            <ul class="list-reset w-40">
+                                <li><a href="/refresh" class="w-40 px-4 py-2 block text-gray-900 hover:bg-gray-400 no-underline hover:no-underline">Update auto lijst</a></li>
+                                <li><a href="{{ route('logout')}}" class="w-40 px-4 py-2 block text-gray-900 hover:bg-gray-400 no-underline hover:no-underline">Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -81,11 +82,11 @@
 
         </div>
     </nav>
-    <div class="container w-full mx-auto pt-20">
+    <div class="container mx-auto pt-20">
 
         <div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
 
-        @yield('content')
+         @yield('content')
 
         </div>
 

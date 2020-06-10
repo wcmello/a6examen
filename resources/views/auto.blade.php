@@ -51,16 +51,19 @@
     <table class="min-w-full bg-white">
 	<thead class="bg-gray-800 text-white">
 		<tr>
-		  <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-		  <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">View / Delete</th>
+		  <th class="w-4/5 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
+		  <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm text-center">View</th>
+		  <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm text-center">Delete</th>
 		</tr>
 	</thead>
     <tbody class="text-gray-700">
       	@foreach($car->files as $file)
       		<tr>
-	        	<td class="w-1/3 text-left py-3 px-4">{{$file->name}}</td>
-	        	<td class="w-1/3 text-left py-3 px-4 flex justify-between">
+	        	<td class="w-4/5 text-left py-3 px-4">{{$file->name}}</td>
+	        	<td class="text-center">
 	        		<a href="/storage/{{$file->location}}"  target="_blank"><i class="fas fa-search"></i></a>
+	        	</td>
+	        	<td class="text-center">
 	        		<a href="delete/{{$car->licenseplate}}/file/{{$file->name}}"><i class="fas fa-trash-alt"></i></a>
 	        	</td>
     		</tr>

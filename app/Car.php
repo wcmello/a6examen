@@ -17,7 +17,7 @@ class Car extends Model
 
     //geef aan welke columns je sortable wilt maken
     public $sortable = [
-    	'brand', 'model', 'version', 'licenseplate', 'availableKeys'
+    	'brand', 'model', 'version', 'licenseplate', 'keyamount'
     ];
 
     //bypass voor sortable columns voor een SQL SUM query

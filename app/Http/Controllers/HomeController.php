@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Car;
+use App\File;
 class HomeController extends Controller
 {
     /**
@@ -23,7 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = [
+            'carcount' =>  Car::count(),
+            'filecount' => File::count(),
+            'keycount' => Car::sum('keyamount')
+        ];
+        return view('home', $data);
     }
     public function logout()
     {   
