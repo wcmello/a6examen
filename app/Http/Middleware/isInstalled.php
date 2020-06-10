@@ -16,7 +16,7 @@ class isInstalled
     public function handle($request, Closure $next)
     {
 
-        if (file_exists(storage_path().'installed')) {
+        if (file_exists(storage_path().'/installed')) {
             return $next($request);
         }
         else {
