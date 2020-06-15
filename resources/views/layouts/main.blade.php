@@ -80,11 +80,22 @@
                     <li class="mr-6 my-2 md:my-0">
                         @if(strtolower(Request::path()) == 'autos')
                         <a href="/autos" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-pink-500 border-green-600">
-                            <i class="fas fa-tasks fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Auto's</span>
+                            <i class="fas fa-car fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Auto's</span>
                         </a>
                         @else
                         <a href="/autos" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-pink-500">
-                            <i class="fas fa-tasks fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Auto's</span>
+                            <i class="fas fa-car fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Auto's</span>
+                        </a>
+                        @endif
+                    </li>
+                    <li class="mr-6 my-2 md:my-0">
+                        @if(strtolower(Request::path()) == 'verkocht')
+                        <a href="/verkocht" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-pink-500 border-green-600">
+                            <i class="fas fa-coins fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Verkocht</span>
+                        </a>
+                        @else
+                        <a href="/verkocht" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-900 border-b-2 border-white hover:border-pink-500">
+                            <i class="fas fa-coins fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Verkocht</span>
                         </a>
                         @endif
                     </li>

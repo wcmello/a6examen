@@ -17,11 +17,52 @@ class CarController extends Controller
 
         $data = [
             //haal alle autos op, maak ze sortable en filterable met 15 per pagina
-            'cars' => Car::withCount('files')->sortable()->paginate(15)->onEachSide(1)
+            'cars' => Car::where('sold', 0)->withCount('files')->sortable()->paginate(15)->onEachSide(1)
+        ];
+        return view('autos', $data);
+    }
+    /**
+     * Display a listing of the resource where sold = 1.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function sold()
+    {
+        $data = [
+            //haal alle autos op, maak ze sortable en filterable met 15 per pagina
+            'cars' => Car::where('sold', 1)->withCount('files')->sortable()->paginate(15)->onEachSide(1)
         ];
         return view('autos', $data);
     }
 
+
+    public function setSold($kenteken)
+    {
+        //load car where license is selected
+        $car = Car::where('licenseplate', $kenteken)->first();
+
+        //change car sold to 1
+        $car->sold = 1;
+
+
+        //save car
+        $car->save();
+
+        return redirect('verkocht');
+    }
+    public function undoSold($kenteken)
+    {
+        //load car where license is selected
+        $car = Car::where('licenseplate', $kenteken)->first();
+
+        //change car sold to 0
+        $car->sold = 0;
+
+        //save car
+        $car->save();
+
+        return redirect('verkocht');
+    }
     /**
      * Show the form for creating a new resource.
      *

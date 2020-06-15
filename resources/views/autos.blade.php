@@ -6,6 +6,9 @@
     background: transparent; /* make scrollbar transparent */
 }
 </style>
+<div class="flex justify-start">
+	<h1 class="capitalize text-2xl">{{Request::path()}}</h1>
+</div>
 	{{ $cars->links() }}
 <div class="shadow sm:overflow-x-scroll rounded border-b border-gray-200 my-2" id="table" >
 	<table class="min-w-full bg-white">

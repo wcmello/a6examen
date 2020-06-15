@@ -24,12 +24,21 @@ Route::middleware(['installed'])->group(function () {
 		//Route voor lijst van alle autos
 		Route::get('/autos', 'CarController@index');
 
+		//Route voor alle verkochte autos
+		Route::get('/verkocht', 'CarController@sold');
+
 		//Route voor specifieke auto op kenteken
 		Route::get('/auto/{kenteken}', 'CarController@show');
 
 		//post route om een file te uploaden bij een auto
 		//Request $request
 		Route::post('/auto/{kenteken}', 'FileController@store');
+
+		//route om een auto op verkocht te setten
+		Route::get('/auto/{kenteken}/set/sold', 'CarController@setSold');
+
+		//route om een auto op verkocht te setten
+		Route::get('/auto/{kenteken}/set/unsold', 'CarController@undoSold');
 
 		//delete route voor een file
 		Route::get('/auto/delete/{kenteken}/file/{filename}', 'FileController@destroy');

@@ -1,6 +1,15 @@
 @extends('layouts.main')
 @section('content')
 <div class="md:px-32 py-8 w-full">
+	<div class="flex justify-end">
+		@if($car->sold)
+		<a href="/auto/{{$car->licenseplate}}/set/unsold" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Niet meer verkocht</a>
+		@else
+		<a href="/auto/{{$car->licenseplate}}/set/sold" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Verkocht</a>
+		@endif
+
+		
+	</div>
 	<div>
 		<table>
 			<thead>

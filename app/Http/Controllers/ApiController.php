@@ -37,24 +37,16 @@ class ApiController extends Controller
 						]);
 					}
 	    		}
-	    		/*elseif ($stockarray == 3) {
-	    			if (!Car::where('licenseplate', $car[0]['licensePlate'] ?? 'N/A')->first()) {
-						Car::create([
-							'brand' => $car[0]['make'] ?? 'N/A',
-							'model' => $car[0]['model'] ?? 'N/A',
-							'version' => $car[0]['version'] ?? 'N/A',
-							'licenseplate' => $car[0]['licensePlate'] ?? 'N/A',
-							'sold' => 1,
-						]);
-						$count++;
-					}
-					else{
-						$car = Car::where('licenseplate', $car[0]['licensePlate'] ?? 'N/A')->first();
-
-						$car->sold = 1;
-						$car->save();
-					}
-	    		}*/
+	    		elseif($stockarray == 3){
+	    			//haal hier de informatie van de auto op, op basis van stockNumber
+	    			$car = Http::withOptions(['verify' => false])->withToken($token)->get('https://advertisementapi.autotelexpro.nl/Vehicle/ByStockNumber/' . $stock['stockNumber']);
+	    			//zet deze informatie om naar bruikbare json
+					$car = $car->json();
+	    			if ($c = Car::where('licenseplate', $car[0]['licensePlate'] ?? 'Not available')->first()) {
+	    				$c->sold = 1;
+	    				$c->save();
+	    			}
+	    		}
 	    	}
 	    }
 	    return redirect('home');
