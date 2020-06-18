@@ -9,7 +9,7 @@
 <div class="flex justify-start">
 	<h1 class="capitalize text-2xl">{{Request::path()}}</h1>
 </div>
-	{{ $cars->links() }}
+{{ $cars->appends(\Request::except('page'))->render() }}
 <div class="shadow sm:overflow-x-scroll rounded border-b border-gray-200 my-2" id="table" >
 	<table class="min-w-full bg-white">
 		<thead class="bg-gray-800 text-white">
@@ -33,6 +33,5 @@
 	</table>
 	
 </div>
-{{ $cars->links() }}
-
+{{ $cars->appends(\Request::except('page'))->render() }}
 @endsection

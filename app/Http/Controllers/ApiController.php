@@ -13,6 +13,9 @@ class ApiController extends Controller
     	//haalt alle autos op in een lijst
 		$response = Http::withOptions(['verify' => false])->withToken($token)->get('https://advertisementapi.autotelexpro.nl/Vehicle/All');
 
+		if (!$response->json()) {
+			dd('API niet beschikbaar, dit is een error van Autotelexpro');
+		}
 		//loop door elke auto in de lijst
 	    foreach ($response->json() as $stock) {
 	    	//loop door alle stockstatusen die deze auto heeft
